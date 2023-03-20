@@ -5,6 +5,94 @@ head
   title Profile
   link(rel='stylesheet' href='profile.css')
   script(src='https://kit.fontawesome.com/2c8b4361dd.js' crossorigin='anonymous')
+  style.
+    *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
+    .background{
+    height: 100vh;
+    width:100% ;
+    background-color: #45523e;
+    background-size:100% 100%;
+    background-attachment: fixed;
+    border-radius: 2px;
+    }
+    nav{
+    background-color:  #010101;
+    color: #f5ece5;
+    }
+    /* menu */
+    .menu ul li{
+    display: inline-flex;
+    list-style-type: none;
+    font-size: 16px;
+    padding: 20px;
+    font-family: poppins, sans-serif;
+    }
+    .menu{
+    text-align: right;
+    }
+    .image{
+    margin: 4%;
+    }
+    .content{
+    position: absolute;
+    top: 30%;
+    left: 42%;
+    transform: translate(-50%,-50%);
+    width: 700px;
+    }
+    h1{
+    color: #f5ece5;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    }
+    h2{
+    color: #f5ece5;
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    }
+    a{
+    color: #f5ece5;
+    }
+    .rating{
+    color: rgb(217, 185, 7);
+    }
+    button{
+    position: absolute;
+    top: 50%;
+    left: 65%;
+    width: 10%;
+    height: 5%;
+    background-color: #ad5d50;;
+    color:  #f5ece5;
+    border-radius: 5px;
+    }
+    .comments{
+    margin: 10%;
+    margin-top: 2%;
+    display: flex;
+    justify-content: space-between;
+    }
+    .rate h1{
+    color: #f5ece5;
+    font-size: 25px;
+    left: 65%;
+    transform: translate(40%,-50%);
+    font-family: poppins, sans-serif;
+    padding-top: 8%;
+    }
+    .c1{
+    flex-basis: 25%;
+    background-color: #d8c4c1;
+    color: #45523e;
+    border-radius: 5px;
+    margin-bottom: 5%;
+    padding: 2% 1.5% ;
+    box-sizing: border-box;
+    }
 section.background
   nav
     .menu
@@ -18,12 +106,12 @@ section.background
   .image
     img(src='profile.jpg')
   .content
-    h1 Rani
+    h1 #{name}
     br
     h2
-      a(href='rani2000@gmail.com') rani2000@gmail.com
+      a(href='rani2000@gmail.com') #{email}
     br
-    h2 8590633525
+    h2 #{contact}
     br
     .rating
       span.fa.fa-star
