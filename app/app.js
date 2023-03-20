@@ -15,7 +15,7 @@ const db = require('./services/db');
 
 // Create a route for root - /
 app.get("/", function(req, res) {
-    res.send("Hello world!");
+    res.send("Hello ");
 });
 
 
@@ -25,13 +25,18 @@ app.get("/profile/:id",function(req ,res){
     // res.render('index');
     var id = req.params.id;
     console.log(id);
-    sql='SELECT email FROM profile where profile_id = ?';
+    sql='SELECT name FROM profile where profile_id = ?';
     db.query(sql,[id]).then(results =>{
         // console.log(results)
         //res.send(results)
-        res.render('profile', {data: results[0].email})
+        res.render('profile', {data: results[0].name})
+        
+        
     });
 });
+
+
+
 
 
 
