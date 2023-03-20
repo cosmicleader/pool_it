@@ -1,0 +1,58 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'inter', sans-serif;
+}
+.container{
+    width: 100%;
+    height: 100vh;
+    padding: 5%;
+    background-image: linear-gradient(rgba(69, 82, 62, 0.9),rgba(69, 82, 62, 0.9)),url(assets/images/bg_img.jpg);
+    background-position: center;
+    background-size: cover;
+}
+.findButton{
+    border: 0;
+    border-radius: 8px;
+    margin: 10px 0;
+    padding:20px;
+    width: 80%;
+    outline: none;
+    background: #AD5D50;
+    
+}
+.findRoute{
+    color: #fff;
+}
+.formRow{
+    flex-direction: row;
+display: inline;
+border: 0;
+width: 100%;
+border-radius: 8px;
+
+/* margin: 10px 0; */
+/* padding:20px; */
+outline: none;
+}
+form{
+    /* background-color: #D9D9D9; */
+    display: flex;
+    flex-direction: column;
+    padding: 2vw,4vw;
+    width: 90%;
+    
+}
+.findtext{
+    color: #ffff;
+}
+form input,form textarea{
+    border: 0;
+    border-radius: 8px;
+    margin: 10px 0;
+    padding:20px;
+    outline: none;
+    background: #D9D9D9;
+
+}
