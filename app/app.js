@@ -31,7 +31,7 @@ app.get("/profile/:id",function(req ,res){
     db.query(sql,[id]).then(results =>{
         console.log(results)
         //res.send(results)
-        res.render('profile', {email: results[0].email,name: results[0].name})
+        res.render('profile', {email: results[0].email,name: results[0].name,contact: results[0].contact})
         
         
     });
