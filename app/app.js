@@ -27,11 +27,11 @@ app.get("/profile/:id",function(req ,res){
     // res.render('index');
     var id = req.params.id;
     console.log(id);
-    sql='SELECT name FROM profile where profile_id = ?';
+    sql='SELECT * FROM profile where profile_id = ?';
     db.query(sql,[id]).then(results =>{
-        // console.log(results)
+        console.log(results)
         //res.send(results)
-        res.render('profile', {data: results[0].name})
+        res.render('profile', {email: results[0].email,name: results[0].name})
         
         
     });
