@@ -18,7 +18,9 @@ app.get("/", function(req, res) {
     res.send("Hello ");
 });
 
-
+app.get("/routematching", function(req, res) {
+    res.render("routematching");
+});
 
 //dynamic route for profile data
 app.get("/profile/:id",function(req ,res){
