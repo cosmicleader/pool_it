@@ -14,8 +14,12 @@ app.use(express.static("static"));
 const db = require('./services/db');
 
 // Create a route for root - /
-app.get("/", function(req, res) {
+app.get("/home", function(req, res) {
     res.render("home");
+});
+
+app.get("/login", function(req, res) {
+    res.render("login");
 });
 app.get("/long_trip", function(req, res) {
     res.render("long_trip");

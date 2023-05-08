@@ -1,0 +1,171 @@
+style.
+  
+ body{
+   background-image: url("images/1.jpg");
+   background-size: cover;
+   background-position: center;
+   background-attachment: fixed;
+   background-repeat: no-repeat;
+ }
+ .box{
+   display: flex;
+   justify-content: right;
+   align-items: center;
+   min-height: 90vh;
+ }
+ .container{
+   width: 350px;
+   height: 550PX;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   padding: 0px 15px 0px 15px;
+ }
+ span{
+   color: #fff;
+   font-size: small;
+   display: flex;
+   justify-content: center;
+   padding: 10px 0px 10px 0px;
+ }
+ header{
+   color: #fff;
+   font-size: 30px;
+   display: flex;
+   justify-content: center;
+   padding: 10px 0px 10px 0px;
+ }
+ .input-field .input{
+   height: 45px;
+   width: 87%;
+   border: none;
+   border-radius: 30px;
+   color: #000;
+   font-size: 15px;
+   padding: 0px 0px 0px 45px;
+   background: #fff;
+   outline: none;
+ }
+ i{
+   position: relative;
+   top: -33px;
+   left: 17px;
+   color: #000;
+ }
+ ::-webkit-input-placeholder{
+   color:#000;
+ }
+ .submit{
+   border: none;
+   border-radius: 30px;
+   font-size: 15px;
+   height: 45px;
+   outline: none;
+   width: 100%;
+   color: black;
+   background-color: #AD5D50;
+   cursor: pointer;
+   transition: .3s ;
+ }
+ .submit:hover{
+   box-shadow: 1px 5px 7px 1px rgba(0, 0, 0, 0.2);
+ }
+ .two-col{
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   color: #fff;
+   font-size: small;
+   margin-top: 10px;
+ }
+ .one{
+   display: flex;
+ }| label a{
+   text-decoration: none;
+   color: #fff;
+ }
+ .signup_link{
+   margin: 30px 0px;
+   text-align: center;
+   font-size: 16px;
+   color: #FFF;
+   }
+   .signup_link a{
+   color: #AD5D50;
+   text-decoration: none;
+   }
+   .signup_link a:hover{
+   text-decoration: underline;
+   }
+   .right{
+   background-color: #45523E;
+   float: right;
+   width: 26%;
+   height: 680px;
+   }
+   .left{
+   float: left;
+   background-image: url('bag.jpg');
+   height: 680px;
+   width: 74%;
+   }
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(
+      content="IE=edge" 
+      http-equiv="X-UA-Compatible"
+      )
+    meta(
+      content="width=device-width, initial-scale=1.0" 
+      name="viewport"
+      )
+    link(
+      href="styles.css" 
+      rel="stylesheet"
+      )
+    link(
+      rel="stylesheet" 
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      )
+    title Ludiflex | Login
+  body
+    div
+      .left
+      .right
+        .box
+          .container
+            .top
+              span Have an account?
+              header Login Here
+            .input-field
+              input.input(
+                placeholder="Email" 
+                type="text"
+                )
+              
+            .input-field
+              input.input(
+                placeholder="Password" 
+                type="Password"
+                )
+              
+            .input-field
+              input.submit(
+                value="Login" 
+                type="submit"
+                )
+            .two-col
+              .one
+                input#check(
+                  name="" 
+                  type="checkbox"
+                  )
+                label(for="check") Remember Me
+              .two
+                label
+                  a(href="#") Forgot password?
+            div(class="signup_link")
+              | Not a member?
+              a(href="#") Signup
