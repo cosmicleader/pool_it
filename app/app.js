@@ -49,10 +49,23 @@ app.get("/routematching", function (req, res) {
   res.render("routematching");
 });
 
+
+
+
+app.get("/result_routematching", function(req, res) {
+    res.render("result_routematching");
+    
+});        
 // Register
 app.get("/register", function (req, res) {
   res.render("register");
 });
+
+
+
+
+
+
 
 //dynamic route for profile data
 app.get("/profile/:id", function (req, res) {
