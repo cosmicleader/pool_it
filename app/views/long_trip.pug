@@ -1,0 +1,72 @@
+html
+  head
+    title Search Long Trips - Pool IT
+    style
+      body {
+        background-color: #45523E;
+        font-family: Arial, sans-serif;
+        color: #F5ECE5;
+        margin: 0;
+        padding: 0;
+      }
+
+      #search-container {
+        max-width: 600px;
+        margin: 50px auto;
+        background-color: rgba(0, 0, 0, 0.2);
+        padding: 30px;
+        border-radius: 10px;
+      }
+
+      h1 {
+        text-align: center;
+        margin-top: 0;
+      }
+
+      input[type="text"] {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+
+      input[type="submit"] {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background-color: #AD5D50;
+        color: #F5ECE5;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #D1746F;
+      }
+  body
+    ul
+      li
+        a(href="profile.html") Profile
+      li
+        a(href="rent.html") Rent
+      li.current
+        a(href="long_trip.html") Long Trip
+      li
+        a(href="routematching.html") Routematching
+      li
+        a(href="home.html") Home
+    div#search-container
+      h1 Search Long Trips
+      form(action="#" method="get")
+        label(for="destination") Destination:
+        input(type="text" id="destination" name="destination" placeholder="Enter your destination")
+        label(for="departure-date") Departure date:
+        input(type="text" id="departure-date" name="departure-date" placeholder="Enter departure date")
+        label(for="return-date") Return date:
+        input(type="text" id="return-date" name="return-date" placeholder="Enter return date")
+        input(type="submit" value="Search")

@@ -1,0 +1,45 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    // link css to this html
+    link(rel="stylesheet", href="home.css")
+    title POOL IT | Home
+  body
+    div.bg
+      ul
+        li: a(href="profile.html") Profile
+        li: a(href="rent.html") Rent
+        li: a(href="long_trip.html") Long Trip
+        li: a(href="routematching.html") Routematching
+        li: a(href="home.html", class="current") Home
+      div.sized_box1
+      img.add_image(src="assets/ad_img.jpg", alt="sky")
+      div.sized_box1
+      div.Sized_box2
+      div.bottom_bg
+        p.paragraph Welcome to Pool It, where we are dedicated to providing you with the best transportation solutions for your needs. Whether you need a ride to the airport, a corporate event, or a night out on the town, we've got you covered. Our experienced drivers are professional, courteous, and committed to your safety and satisfaction.
+        //- p.paragraph At Pool It, we understand that transportation can be a major expense, which is why we offer competitive rates that are affordable for everyone. We also understand the importance of being punctual, which is why we guarantee that you will arrive at your destination on time, every time.
+        //- p.paragraph We offer a variety of transportation options to meet your needs, including shared rides, private cars, and luxury vehicles. Our user-friendly website and mobile app make it easy to book your ride and track your driver in real-time. We also offer 24/7 customer support to ensure that you have a smooth and stress-free experience from start to finish.
+        //- p.paragraph At Pool It, we are committed to sustainability and reducing our carbon footprint. That's why we prioritize carpooling and offer a fleet of hybrid and electric vehicles to minimize our impact on the environment.
+        //- p.paragraph Thank you for choosing Pool It for your transportation needs. We look forward to serving you and providing you with the best transportation experience possible.
+      div.rlp
+        div.rlpc1
+          h4.button_description Click this button to view your matching ride options
+          a.button(href="routematching.html") Routematching
+        div.rlpc2
+          h4.button_description Click this button to find longer trips.
+          a.button(href="long_trip.html") Long Trip
+        div.rlpc3
+          h4.button_description Click this button to edit your profile
+          a.button(href="profile.html") Profile
+    footer
+      p &copy; 2023 Pool It
+    
+    script.
+      // JS code here
+      function goBack() {
+        window.history.back();
+      }
