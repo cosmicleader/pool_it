@@ -1,29 +1,65 @@
+doctype html
 html
   head
+    meta(charset="UTF-8")
     title Search Long Trips - Pool IT
-    style
+    style.
       body {
+        font-family: 'Inter', sans-serif;
+      }
+      /* * {
+        background-color: #45523E;
+        } */
+        a {
+        display: block;
+        padding: 8px;
+        background-color: #010101;
+        }
+        ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #010101;
+        }
+        li {
+        float: right;
+        }
+        li a {
+        display: block;
+        color: #F5ECE5;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        }
+        li a:hover {
+        background-color: #F5ECE5;
+        color: #010101;
+        }
+        a.current {
+        background-color: #B0ACA2;
+        color: #010101;
+        } 
+        body {
         background-color: #45523E;
         font-family: Arial, sans-serif;
         color: #F5ECE5;
         margin: 0;
         padding: 0;
-      }
-
-      #search-container {
+        }
+        #search-container {
         max-width: 600px;
         margin: 50px auto;
         background-color: rgba(0, 0, 0, 0.2);
         padding: 30px;
         border-radius: 10px;
-      }
-
-      h1 {
+        }
+        h1 {
+        /* color: #010101; */
         text-align: center;
         margin-top: 0;
-      }
-
-      input[type="text"] {
+        }
+        input[type="text"] {
         display: block;
         width: 100%;
         padding: 10px;
@@ -31,9 +67,8 @@ html
         border: none;
         border-radius: 5px;
         font-size: 16px;
-      }
-
-      input[type="submit"] {
+        }
+        input[type="submit"] {
         display: block;
         width: 100%;
         padding: 10px;
@@ -43,30 +78,47 @@ html
         border-radius: 5px;
         font-size: 16px;
         cursor: pointer;
-      }
-
-      input[type="submit"]:hover {
+        }
+        input[type="submit"]:hover {
         background-color: #D1746F;
-      }
+        }
   body
     ul
       li
         a(href="profile.html") Profile
       li
         a(href="rent.html") Rent
-      li.current
-        a(href="long_trip.html") Long Trip
+      li
+        a.current(href="long_trip.html") Long Trip
       li
         a(href="routematching.html") Routematching
       li
         a(href="home.html") Home
-    div#search-container
+    #search-container
       h1 Search Long Trips
-      form(action="#" method="get")
+      form(
+        method="get" 
+        action="#"
+        )
         label(for="destination") Destination:
-        input(type="text" id="destination" name="destination" placeholder="Enter your destination")
+        input#destination(
+          placeholder="Enter your destination" 
+          name="destination" 
+          type="text"
+          )
         label(for="departure-date") Departure date:
-        input(type="text" id="departure-date" name="departure-date" placeholder="Enter departure date")
+        input#departure-date(
+          placeholder="Enter departure date" 
+          name="departure-date" 
+          type="text"
+          )
         label(for="return-date") Return date:
-        input(type="text" id="return-date" name="return-date" placeholder="Enter return date")
-        input(type="submit" value="Search")
+        input#return-date(
+          placeholder="Enter return date" 
+          name="return-date" 
+          type="text"
+          )
+        input(
+          value="Search" 
+          type="submit"
+          )
