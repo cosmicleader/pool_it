@@ -51,18 +51,19 @@ async getIdFromEmail() {
     async authenticate(submitted) {
         // Get the stored, hashed password for the user
         console.log("submitted :"+ submitted);
-        console.log("authnticate"+this.id);
+        console.log("authnticate "+this.id);
         var sql = "SELECT password FROM Users WHERE id = ?";
         
         const result = await db.query(sql, [this.id]);
         console.log(result[0].password );
         try{
 
-        
-        const match = await bcrypt.compare(submitted, result[0].password);
+        var pwd = result[0].password;
+        console.log('pwd = ', pwd);
+        const match = await bcrypt.compare(submitted, pwd);
         console.log('>>>>>> ', submitted);
         console.log('>>>>>> ', result[0].password);
-        if (match === true) {
+        if (match === !true) {
             return true;
         }
         else {

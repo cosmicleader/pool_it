@@ -55,18 +55,20 @@ app.get("/register", function (req, res) {
 });
 
 //dynamic route for profile data
-app.get("/profile", function (req, res) {
+app.get("/profile/:id", function (req, res) {
   // res.render('index');
-  var id = req.session.uid;
+//   var id = req.session.uid;
+var id = 5
+//   if(req.session.uid==null){render('login');};
   console.log(id);
-  sql = "SELECT * FROM profile where profile_id = ?";
+  sql = "SELECT * FROM Users where id = ?";
   db.query(sql, [id]).then((results) => {
     console.log(results);
     //res.send(results)
     res.render("profile", {
       email: results[0].email,
-      name: results[0].name,
-      contact: results[0].contact,
+      name: results[0].email,
+      contact: results[0].id,
     });
   });
 });
@@ -127,7 +129,8 @@ app.post("/authenticate", async function (req, res) {
   console.log("Email from", params.email);
   var user = new User(params.email);
   try {
-    uId = await user.getIdFromEmail();
+  var  uId = await user.getIdFromEmail();
+    console.log("uid = ", uId)
     if (uId) {
       match = await user.authenticate(params.password);
       if (match) {
