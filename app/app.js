@@ -54,6 +54,10 @@ app.get("/register", function (req, res) {
   res.render("register");
 });
 
+app.get("/result_routematching", function(req, res) {
+    res.render("result_routematching");
+});
+
 //dynamic route for profile data
 app.get("/profile", function (req, res) {
   // res.render('index');
