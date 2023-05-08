@@ -62,7 +62,7 @@ var id = 5
 //   if(req.session.uid==null){render('login');};
   console.log(id);
   sql = "SELECT * FROM Users where id = ?";
-  db.query(sql, [id]).then((results) => {
+  db.query(sql, [user.id]).then((results) => {
     console.log(results);
     //res.send(results)
     res.render("profile", {
