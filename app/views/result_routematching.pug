@@ -1,0 +1,171 @@
+doctype html
+html
+  head
+    title Search Results
+    link(
+      href="results-page.css"
+      type="text/css"
+      rel="stylesheet"
+      )
+    style.
+      * {
+        background-color: #45523E;
+        }
+        body {
+        font-family: 'Inter', sans-serif;
+        }
+        a {
+        display: block;
+        padding: 8px;
+        background-color: #010101;
+        }
+        ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #010101;
+        }
+        li {
+        float: right;
+        }
+        li a {
+        display: block;
+        color: #F5ECE5;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        }
+        li a:hover {
+        background-color: #F5ECE5;
+        color: #010101;
+        }
+        a.current {
+        background-color: #B0ACA2;
+        color: #010101;
+        }
+      .results-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 50px;
+        }
+        .result {
+        width: 80%;
+        margin-bottom: 20px;
+        padding: 20px;
+        background-color: rgba(1, 1, 1, 0.2);
+        /* background-color: #f2f2f2; */
+        border-radius: 10px;
+        }
+        .result h2 {
+        margin-bottom: 10px;
+        color: #F5ECE5;
+        background-color: rgba(1, 1, 1, 0.2);
+        }
+        h1{
+        color: #F5ECE5;
+        }
+        p{
+        color: #F5ECE5;
+        background-color: rgba(1, 1, 1, 0.2);
+        }
+        .request-button {
+        background-color: #AD5D50;
+        color: #F5ECE5;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        }
+        .request-button:hover {
+        background-color: #3e8e41;
+        }
+        .back-btn {
+        background-color: #AD5D50;
+        color: #F5ECE5;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        margin: 20px;
+        }
+        .back-btn:hover {
+        background-color: #006600;
+        }
+  body
+    ul
+      li
+        a(href="profile.html") Profile
+      li
+        a(href="rent.html") Rent
+      li
+        a(href="long_trip.html") Long Trip
+      li
+        a.current(href="routematching.html") Routematching
+      li
+        a(href="home.html") Home
+    button.back-btn(onclick="goBack()") Go Back
+    h1 Search Results
+    .results-container
+      .result
+        h2 Driver Name
+        p Date: May 15th, 2023
+        button.request-button Request Ride
+      .result
+        h2 Driver Name
+        p Date: May 16th, 2023
+        button.request-button Request Ride
+      .result
+        h2 Driver Name
+        p Date: May 17th, 2023
+        button.request-button Request Ride
+      .result
+        h2 Driver Name
+        p Date: May 17th, 2023
+        button.request-button Request Ride
+      .result
+        h2 Driver Name
+        p Date: May 17th, 2023
+        button.request-button Request Ride
+      .result
+        h2 Driver Name
+        p Date: May 17th, 2023
+        button.request-button Request Ride
+      .result
+        h2 Driver Name
+        p Date: May 17th, 2023
+        button.request-button Request Ride
+      .result
+        h2 Driver Name
+        p Date: May 17th, 2023
+        button.request-button Request Ride
+      .result
+        h2 Driver Name
+        p Date: May 17th, 2023
+        button.request-button Request Ride
+      .result
+        h2 Driver Name
+        p Date: May 17th, 2023
+        button.request-button Request Ride
+      .result
+        h2 Driver Name
+        p Date: May 17th, 2023
+        button.request-button Request Ride
+      .result
+        h2 Driver Name
+        p Date: May 17th, 2023
+        button.request-button Request Ride
+      .result
+        h2 Driver Name
+        p Date: May 17th, 2023
+        button.request-button Request Ride
+    footer
+      p © 2023 Pool It
+    script.
+      // JS code here
+        function goBack() {
+        window.history.back();
+        }
