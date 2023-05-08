@@ -13,20 +13,20 @@ class User {
         this.email = email;
     }
     
-    // Get an existing user id from an email address, or return false if not found
-
-    async getIdFromEmail() {
-        var sql = "SELECT id FROM Users WHERE Users.email = ?";
-        const result = await db.query(sql, [this.email]);
-        // TODO LOTS OF ERROR CHECKS HERE..
-        if (JSON.stringify(result) != '[]') {
-            this.id = result[0].id;
-            return this.id;
-        }
-        else {
-            return false;
-        }
+// Checks to see if the submitted email address exists in the Users table
+async getIdFromEmail() {
+    var sql = "SELECT id FROM Users WHERE Users.email = ?";
+    const result = await db.query(sql, [this.email]);
+    // TODO LOTS OF ERROR CHECKS HERE..
+    if (JSON.stringify(result) != '[]') {
+        this.id = result[0].id;
+        console.log("get id from email "+ (this.id));
+        return this.id;
     }
+    else {
+        return false;
+    }
+}
 
 
     // Add a password to an existing user
@@ -47,21 +47,34 @@ class User {
         return true;
     }
 
+    // Test a submitted password against a stored password
+    async authenticate(submitted) {
+        // Get the stored, hashed password for the user
+        console.log("submitted :"+ submitted);
+        console.log("authnticate"+this.id);
+        var sql = "SELECT password FROM Users WHERE id = ?";
+        
+        const result = await db.query(sql, [this.id]);
+        console.log(result[0].password );
+        try{
 
-// Test a submitted password against a stored password
-async authenticate(submitted) {
-    // Get the stored, hashed password for the user
-    var sql = "SELECT password FROM Users WHERE id = ?";
-    const result = await db.query(sql, [this.id]);
-    const match = await bcrypt.compare(submitted, result[0].password);
-    if (match == true) {
-        return true;
-    }
-    else {
-        return false;
-    }
-}
-
+        
+        const match = await bcrypt.compare(submitted, result[0].password);
+        console.log('>>>>>> ', submitted);
+        console.log('>>>>>> ', result[0].password);
+        if (match === true) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    } catch (error) {
+        console.error(error);
+        // Expected output: ReferenceError: nonExistentFunction is not defined
+        // (Note: the exact output may be browser-dependent)
+      }
+    
+    } 
 
 
 }
