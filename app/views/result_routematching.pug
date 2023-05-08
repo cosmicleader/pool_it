@@ -104,64 +104,17 @@ html
       li
         a(href="long_trip.html") Long Trip
       li
-        a.current(href="routematching.html") Routematching
+        a.current(href="routematching") Routematching
       li
         a(href="home.html") Home
     button.back-btn(onclick="goBack()") Go Back
     h1 Search Results
     .results-container
-      .result
-        h2 Driver Name
-        p Date: May 15th, 2023
-        button.request-button Request Ride
-      .result
-        h2 Driver Name
-        p Date: May 16th, 2023
-        button.request-button Request Ride
-      .result
-        h2 Driver Name
-        p Date: May 17th, 2023
-        button.request-button Request Ride
-      .result
-        h2 Driver Name
-        p Date: May 17th, 2023
-        button.request-button Request Ride
-      .result
-        h2 Driver Name
-        p Date: May 17th, 2023
-        button.request-button Request Ride
-      .result
-        h2 Driver Name
-        p Date: May 17th, 2023
-        button.request-button Request Ride
-      .result
-        h2 Driver Name
-        p Date: May 17th, 2023
-        button.request-button Request Ride
-      .result
-        h2 Driver Name
-        p Date: May 17th, 2023
-        button.request-button Request Ride
-      .result
-        h2 Driver Name
-        p Date: May 17th, 2023
-        button.request-button Request Ride
-      .result
-        h2 Driver Name
-        p Date: May 17th, 2023
-        button.request-button Request Ride
-      .result
-        h2 Driver Name
-        p Date: May 17th, 2023
-        button.request-button Request Ride
-      .result
-        h2 Driver Name
-        p Date: May 17th, 2023
-        button.request-button Request Ride
-      .result
-        h2 Driver Name
-        p Date: May 17th, 2023
-        button.request-button Request Ride
+      each result in results
+        .result
+          h2 Location
+          p #{result.name},        Date: #{result.dateOfBirth}
+          button.request-button Request Ride
     footer
       p © 2023 Pool It
     script.

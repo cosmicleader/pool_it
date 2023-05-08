@@ -135,11 +135,11 @@ html(lang="en")
         |   you can be sure you're getting the most accurate and up-to-date route
         |   information.
       .search-container
-        form(action="results-page.html")
+        form(action="/result_routematching" method="GET" )
           input#end-point(
             required="" 
             placeholder="Destination" 
-            name="end-point" 
+            name="endpoint" 
             type="text"
             )
           input#date(
