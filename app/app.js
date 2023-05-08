@@ -46,9 +46,20 @@ app.get("/routematching", function(req, res) {
     res.render("routematching");
 });
 
+
+
+
 app.get("/result_routematching", function(req, res) {
     res.render("result_routematching");
+    
+        
 });
+
+
+
+
+
+
 
 //dynamic route for profile data
 app.get("/profile",function(req ,res){
