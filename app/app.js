@@ -50,39 +50,51 @@ app.get("/routematching", function (req, res) {
 });
 
 
+app.get("/result_routematching", function(req, res) {
+  const searchQuery = req.query.endpoint || '';
+  const dateQuery = req.query.date || '';
+  const query = 'SELECT * FROM routematch WHERE location LIKE ? AND journey_date <= ? LIMIT 0, 25';
+  console.log("SQL query", query);
+  console.log("SQL date query", dateQuery );
+  console.log("SQL search query", searchQuery );
+  const params = [`%${searchQuery}%`, dateQuery];
+
+  db.query(query, params)
+    .then((results) => {
+      console.log("result for route matching",results);
+      res.render("result_routematching",{results: results});
+    })
+    .catch((err) => {
+      console.log("error on the sql of routematching page",err);
+      res.status(500).send('Error retrieving data from database');
+    });
+});
 
 
 // app.get("/result_routematching?end-point=:location&date=:date", function(req, res) {
-    app.get("/result_routematching", function(req, res) {
+//     app.get("/result_routematching", function(req, res) {
 
-//    var results = [
-//   { name: "John", dateOfBirth: "1990-01-01" },
-//   { name: "Jane", dateOfBirth: "1985-05-10" },
-//   { name: "Bob", dateOfBirth: "1995-12-31" }
+// const searchQuery = req.query.endpoint || '';
+// const dateQuery = req.query.date || '';
+// const query = 'SELECT * FROM routematch WHERE location LIKE ? AND journey_date <= ? LIMIT 0, 25';
+// console.log("SQL query", query);
+// console.log("SQL date query", dateQuery );
+// console.log("SQL search query", searchQuery );
 
-// ];
+// const params = [`%${searchQuery}%`, dateQuery];
 
-const searchQuery = req.query.endpoint || '';
-const dateQuery = req.query.date || '';
-const query = 'SELECT * FROM routematch WHERE location LIKE ? AND journey_date <= ? LIMIT 0, 25 ;';
-console.log("SQL query", query);
-console.log("SQL date query", dateQuery );
-console.log("SQL search query", searchQuery );
+// db.query(query, params).then( (err, results) => {
+//   if (err){
+//     console.log("error on the sql of routematching page",err);
+//     throw err;
+// }; 
+//   console.log("result for route matching",results);
+//   res.render("result_routematching",{results: results});
+// });
 
-const params = [`%${searchQuery}%`, dateQuery];
-
-db.query(query, params, (err, results) => {
-  if (err){
-    console.log("error on the sql of routematching page",err);
-    throw err;
-}; 
-  console.log("result for route matching",results);
-  res.render("result_routematching",{results: results});
-});
-
-    // res.render("result_routematching",{results: results});
+//     // res.render("result_routematching",{results: results});
     
-});        
+// });        
 // Register
 app.get("/register", function (req, res) {
   res.render("register");

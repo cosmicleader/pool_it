@@ -112,8 +112,8 @@ html
     .results-container
       each result in results
         .result
-          h2 Location
-          p #{result.name},        Date: #{result.dateOfBirth}
+          h2 #{result.location}
+          p #{result.driver_name},        Date: #{result.journey_date}
           button.request-button Request Ride
     footer
       p © 2023 Pool It
