@@ -13,6 +13,11 @@ app.set('views', './app/views');
 app.use(express.static("static"));
 // Set the sessions
 var session = require('express-session');
+
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.json());
+
 app.use(session({
   secret: 'secretkeysdfjsflyoifasd',
   resave: false,
@@ -110,6 +115,8 @@ app.post('/set-password', async function (req, res) {
 // Check submitted email and password pair
 app.post('/authenticate', async function (req, res) {
     params = req.body;
+    console.log('request body', (req.body));
+    console.log('Email from', (params.email));
     var user = new User(params.email);
     try {
         uId = await user.getIdFromEmail();
@@ -119,7 +126,7 @@ app.post('/authenticate', async function (req, res) {
                 req.session.uid = uId;
                 req.session.loggedIn = true;
                 console.log(req.session);
-                res.redirect('/single-student/' + uId);
+                res.redirect('/profile/' + uId);
             }
             else {
                 // TODO improve the user journey here
