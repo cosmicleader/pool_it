@@ -98,27 +98,30 @@ html
   body
     ul
       li
-        a(href="profile.html") Profile
+        a(href="profile") Profile
       li
         a(href="rent.html") Rent
       li
-        a(href="long_trip.html") Long Trip
+        a(href="long_trip") Long Trip
       li
         a.current(href="routematching") Routematching
       li
-        a(href="home.html") Home
+        a(href="home") Home
     button.back-btn(onclick="goBack()") Go Back
     h1 Search Results
     .results-container
       each result in results
         .result
-          h2 #{result.location}
-          p #{result.driver_name},        Date: #{result.journey_date}
-          button.request-button Request Ride
+          h2 Location: #{result.location}
+          p Driver's Name: #{result.driver_name} | Date: #{result.journey_date}
+          button.request-button(onclick="showPopup()") Request Ride
     footer
       p © 2023 Pool It
     script.
       // JS code here
         function goBack() {
         window.history.back();
+        }
+        function showPopup() {
+        alert('This is a demo. This feature will be implemented soon.');
         }

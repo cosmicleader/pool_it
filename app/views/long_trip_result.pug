@@ -1,0 +1,170 @@
+doctype html
+html
+  head
+    meta(charset="UTF-8")
+    title Long Trip Results
+    style.
+      * {
+      background-color: #45523E;
+      }
+      body {
+      font-family: 'Inter', sans-serif;
+      }
+      a {
+      display: block;
+      padding: 8px;
+      background-color: #010101;
+      }
+      ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #010101;
+      }
+      li {
+      float: right;
+      }
+      li a {
+      display: block;
+      color: #F5ECE5;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      }
+      li a:hover {
+      background-color: #F5ECE5;
+      color: #010101;
+      }
+      a.current {
+      background-color: #B0ACA2;
+      color: #010101;
+      }  
+      .add_image {
+      border-radius: 8px;
+      }
+      .bg {
+      display: flex;
+      flex-direction: column;
+      background-color: transparent;
+      }
+      .paragraph {
+      color: #F5ECE5;
+      }
+      .sized_box1 {
+      height: 20px;
+      }
+      h1{
+      color:#F5ECE5;
+      }
+      .search-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      }
+      .search-container input[type="text"], .search-container input[type="date"] {
+      margin-bottom: 10px;
+      padding: 10px;
+      width: 100%;
+      box-sizing: border-box;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      background-color: #F5ECE5;
+      font-size: 16px;
+      }
+      .search-container input[type="text"]:focus, .search-container input[type="date"]:focus {
+      outline: none;
+      border-color: #8E8E93;
+      }
+      .search-container button[type="submit"] {
+      background-color: #AD5D50;
+      color: #F5ECE5;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      }
+      .search-container button[type="submit"]:hover {
+      background-color: #8E8E93;
+      }
+      .search-container input:invalid, .search-container input:focus:invalid {
+      border-color: #AD5D50;
+      }
+      p{
+      color: #F5ECE5;  }
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      #search-container {
+        max-width: 600px;
+        margin: 50px auto;
+        background-color: rgba(0, 0, 0, 0.2);
+        padding: 30px;
+        border-radius: 10px;
+      }
+      h1 {
+        text-align: center;
+        margin-top: 0;
+        background-color: transperent;
+      }
+      .trip {
+        margin-bottom: 20px;
+      }
+      .trip .title {
+        font-size: 18px;
+        font-weight: bold;
+      }
+      .trip .details {
+        margin-bottom: 10px;
+      }
+      .trip .price {
+        font-size: 16px;
+        color: #AD5D50;
+      }
+      .trip .book {
+        width: 100%;
+        padding: 10px;
+        justify-content: space-around;
+        background-color: #AD5D50;
+        color: #F5ECE5;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      .links{
+        color: #F5ECE5;
+        text-decoration: none;
+        background-color: transperent;
+      }
+      .trip .book:hover {
+        background-color: #D1746F;
+      }
+  body
+    ul
+      li
+        a(href="/profile/101") Profile
+      li
+        a(href="/rent") Rent
+      li
+        a.current(href="/long_trip") Long Trip
+      li
+        a(href="routematching") Routematching
+      li
+        a(href="home.html") Home
+    #search-container
+      h1 Results for Long Trips
+      if trips
+        each trip in trips
+          .trip
+
+            .details
+               h1 #{trip.title}
+               p #{trip.description}
+               p #{trip.departuredate} - #{trip.returndate}
+               p  Total Cost (in GBP): #{trip.price}
+            .book
+              a.links(send(Coming soon)) Book
+      else
+        | No trips found.

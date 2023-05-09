@@ -98,7 +98,7 @@ html
       h1 Search Long Trips
       form(
         method="get" 
-        action="#"
+        action="/long_trip_result"
         )
         label(for="destination") Destination:
         input#destination(
@@ -106,18 +106,18 @@ html
           name="destination" 
           type="text"
           )
-        label(for="departure-date") Departure date:
-        input#departure-date(
-          placeholder="Enter departure date" 
-          name="departure-date" 
-          type="text"
-          )
-        label(for="return-date") Return date:
-        input#return-date(
-          placeholder="Enter return date" 
-          name="return-date" 
-          type="text"
-          )
+        //- label(for="departure-date") Departure date:
+        //- input#departure-date(
+        //-   placeholder="Enter departure date" 
+        //-   name="departure-date" 
+        //-   type="date"
+        //-   )
+        //- label(for="return-date") Return date:
+        //- input#return-date(
+        //-   placeholder="Enter return date" 
+        //-   name="return-date" 
+        //-   type="date"
+        //-   )
         input(
           value="Search" 
           type="submit"
