@@ -49,28 +49,28 @@ app.get("/routematching", function (req, res) {
   res.render("routematching");
 });
 
-
-app.get("/result_routematching", function(req, res) {
-  const searchQuery = req.query.endpoint || '';
-  const dateQuery = req.query.date || '';
-  const query = 'SELECT * FROM routematch WHERE location LIKE ? AND journey_date <= ? LIMIT 0, 25';
+app.get("/result_routematching", function (req, res) {
+  const searchQuery = req.query.endpoint || "";
+  const dateQuery = req.query.date || "";
+  const query =
+    "SELECT * FROM routematch WHERE location LIKE ? AND journey_date <= ? LIMIT 0, 25";
   console.log("SQL query", query);
-  console.log("SQL date query", dateQuery );
-  console.log("SQL search query", searchQuery );
+  console.log("SQL date query", dateQuery);
+  console.log("SQL search query", searchQuery);
   const params = [`%${searchQuery}%`, dateQuery];
 
   db.query(query, params)
     .then((results) => {
-      console.log("result for route matching",results);
-      res.render("result_routematching",{results: results});
+      console.log("result for route matching", results);
+      res.render("result_routematching", { results: results });
     })
     .catch((err) => {
-      console.log("error on the sql of routematching page",err);
-      res.status(500).send('Error retrieving data from database');
+      console.log("error on the sql of routematching page", err);
+      res.status(500).send("Error retrieving data from database");
     });
 });
 
-app.get('/long_trip_result', async (req, res) => {
+app.get("/long_trip_result", async (req, res) => {
   const destination = req.query.destination;
   console.log("Destination from param :", destination);
   // const startDate = req.query.departuredate;
@@ -81,7 +81,7 @@ app.get('/long_trip_result', async (req, res) => {
   const query = `SELECT * FROM trips WHERE description LIKE '%${destination}%' `;
   try {
     const results = await db.query(query);
-    res.render("long_trip_result",{trips: results});
+    res.render("long_trip_result", { trips: results });
     // res.send(results);
   } catch (error) {
     console.error(error);
@@ -108,36 +108,93 @@ app.get('/long_trip_result', async (req, res) => {
 //   //   });
 //   res.render("long_trip_result");
 // });
-  
+
 // Register
 app.get("/register", function (req, res) {
   res.render("register");
 });
 
-
-
-
-
-
-
-//dynamic route for profile data
-app.get("/profile/:id", function (req, res) {
-  // res.render('index');
-//   var id = req.session.uid;
-var id = 5
-//   if(req.session.uid==null){render('login');};
-  console.log(id);
-  sql = "SELECT * FROM Users where id = ?";
-  db.query(sql, [id]).then((results) => {
-    console.log(results);
-    //res.send(results)
-    res.render("profile", {
-      email: results[0].email,
-      name: results[0].email,
-      contact: results[0].id,
-    });
-  });
+// Create a route for root - /
+app.get("/", function (req, res) {
+  console.log(req.session);
+  if (req.session.uid) {
+    res.send("Welcome back, " + req.session.uid + "!");
+  } else {
+    res.send("Please login to view this page!");
+  }
+  res.end();
 });
+
+
+app.get("/profile", async function (req, res) {
+  console.log(req.session);
+  if (req.session.uid) {
+    try {
+      var id = req.session.uid;
+      if(req.session.uid==null){
+        return res.render('login');
+      };
+      console.log("id of current user: ",id);
+      sql = "SELECT * FROM Users where id = ?";
+      const results = await db.query(sql, [id]);
+      console.log(results);
+      res.render("profile", {
+        email: results[0].email,
+        name: results[0].email,
+        contact: results[0].id,
+      });
+    } catch (error) {
+      console.error(error);
+      res.status(500).send("Internal Server Error");
+    }
+  } else {
+    res.send("Please login to view this page!");
+  }
+});
+
+
+
+// app.get("/profile", function (req, res) {
+//   console.log(req.session);
+//   if (req.session.uid) {
+//     // res.send("Welcome back, " + req.session.uid + "!");
+//     // var id = 5;
+//     var id = req.session.uid;
+//       if(req.session.uid==null){render('login');};
+//     console.log("id of current user: ",id);
+//     sql = "SELECT * FROM Users where id = ?";
+//     db.query(sql, [id]).then((results) => {
+//       console.log(results);
+//       //res.send(results)
+//       res.render("profile", {
+//         email: results[0].email,
+//         name: results[0].email,
+//         contact: results[0].id,
+//       });
+//     });
+//   } else {
+//     res.send("Please login to view this page!");
+//   }
+//   res.end();
+// });
+// //dynamic route for profile data
+// app.get("/profile/:id", function (req, res) {
+//   // res.render('index');
+//   //   var id = req.session.uid;
+//   var id = 5;
+//   //   if(req.session.uid==null){render('login');};
+//   console.log(id);
+//   sql = "SELECT * FROM Users where id = ?";
+//   db.query(sql, [id]).then((results) => {
+//     console.log(results);
+//     //res.send(results)
+//     res.render("profile", {
+//       email: results[0].email,
+//       name: results[0].email,
+//       contact: results[0].id,
+//     });
+//   });
+// });
 // Logout
 app.get("/logout", function (req, res) {
   req.session.destroy();
@@ -195,15 +252,30 @@ app.post("/authenticate", async function (req, res) {
   console.log("Email from", params.email);
   var user = new User(params.email);
   try {
-  var  uId = await user.getIdFromEmail();
-    console.log("uid = ", uId)
+    var uId = await user.getIdFromEmail();
+    console.log("uid = ", uId);
     if (uId) {
       match = await user.authenticate(params.password);
       if (match) {
         req.session.uid = uId;
         req.session.loggedIn = true;
         console.log(req.session);
-        res.redirect("/profile/" + uId);
+        // =======
+        var id = req.session.uid;
+        if(req.session.uid==null){render('login');};
+      console.log("id of current user: ",id);
+      sql = "SELECT * FROM Users where id = ?";
+      db.query(sql, [id]).then((results) => {
+        console.log(results);
+        //res.send(results)
+        res.render("profile", {
+          email: results[0].email,
+          name: results[0].email,
+          contact: results[0].id,
+        });
+      });
+      // ======
+        // res.redirect("/profile");
       } else {
         // TODO improve the user journey here
         res.send("invalid password");

@@ -1,6 +1,6 @@
 // Get the functions in the db.js file to use
 const db = require('../services/db');
-const bcrypt = require("bcryptjs");
+// const bcrypt = require("bcryptjs");
 class User {
 
     // Id of the user
@@ -31,7 +31,8 @@ async getIdFromEmail() {
 
     // Add a password to an existing user
     async setUserPassword(password) {
-        const pw = await bcrypt.hash(password, 10);
+        // const pw = await bcrypt.hash(password, 10);
+        const pw = password;
         var sql = "UPDATE Users SET password = ? WHERE Users.id = ?"
         const result = await db.query(sql, [pw, this.id]);
         return true;
@@ -39,7 +40,8 @@ async getIdFromEmail() {
     
     // Add a new record to the users table    
     async addUser(password) {
-        const pw = await bcrypt.hash(password, 10);
+        // const pw = await bcrypt.hash(password, 10);
+        const pw = password;
         var sql = "INSERT INTO Users (email, password) VALUES (? , ?)";
         const result = await db.query(sql, [this.email, pw]);
         console.log(result.insertId);
@@ -60,10 +62,11 @@ async getIdFromEmail() {
 
         var pwd = result[0].password;
         console.log('pwd = ', pwd);
-        const match = await bcrypt.compare(submitted, pwd);
+        const match = (pwd==submitted);
+        // const match = await bcrypt.compare(submitted, pwd);
         console.log('>>>>>> ', submitted);
         console.log('>>>>>> ', result[0].password);
-        if (match === !true) {
+        if (match === true) {
             return true;
         }
         else {
