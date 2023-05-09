@@ -203,17 +203,19 @@ app.get("/logout", function (req, res) {
 
 app.post("/set-password", async function (req, res) {
   params = req.body;
+  console.log("sign up params:>>>>>>>>>>>" ,params);
   var user = new User(params.email);
   try {
     uId = await user.getIdFromEmail();
     if (uId) {
       // If a valid, existing user is found, set the password and redirect to the users single-student page
+      console.log("password to create account", (params.password));
       await user.setUserPassword(params.password);
       // res.redirect('/single-student/' + uId);
       res.send("Congrats... Your Account is ready");
     } else {
       // If no existing user is found, add a new one
-      newId = await user.addUser(params.email);
+      newId = await user.addUser(params.password);
       res.render("home");
     }
   } catch (err) {

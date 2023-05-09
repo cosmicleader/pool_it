@@ -95,6 +95,25 @@ head
     .image img{
       width:200px;
     }
+    button.sign-out-btn {
+    background-color: #ad5d50;;
+    color:  #f5ece5; /* Red */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    }
+
+    button.sign-out-btn:hover {
+    background-color: #d32f2f; /* Darker red */
+    }
+
 section.background
   nav
     .menu
@@ -113,12 +132,12 @@ section.background
   .image
     img(src='https://th.bing.com/th/id/OIP.cxw_TB5nOSF4fpiVCuZaOAHaHa?w=203&h=204&c=7&r=0&o=5&dpr=1.3&pid=1.7')
   .content
-    h1 #{name}
+    h1 Name Of The User
     br
     h2
-      a(href='rani2000@gmail.com') #{email}
+      a(href='rani2000@gmail.com') email: #{email}
     br
-    h2 #{contact}
+    h2 id: #{contact}
     br
     .rating
       span.fa.fa-star
@@ -126,7 +145,10 @@ section.background
       span.fa.fa-star
       span.fa.fa-star
       span.fa.fa-star
-  button sign out
+    //- button(onclick="location.href='/logout'") Sign Out
+  button.sign-out-btn(onclick="location.href='/logout'", type="button") Sign Out
+
+
   section.empty
     .e
   section.rate

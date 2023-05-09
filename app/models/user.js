@@ -33,6 +33,7 @@ async getIdFromEmail() {
     async setUserPassword(password) {
         // const pw = await bcrypt.hash(password, 10);
         const pw = password;
+        console.log("password to set", pw);
         var sql = "UPDATE Users SET password = ? WHERE Users.id = ?"
         const result = await db.query(sql, [pw, this.id]);
         return true;
