@@ -140,15 +140,15 @@ html(lang="en")
     .bg
       ul
         li
-          a(href="/profile/100") Profile
+          a(href="profile/100") Profile
         li
-          a(href="rent.html") Rent
+          a(href="rent") Rent
         li
-          a(href="/long_trip") Long Trip
+          a(href="long_trip") Long Trip
         li
-          a(href="routematching.html") Routematching
+          a(href="routematching") Routematching
         li
-          a.current(href="home.html") Home
+          a.current(href="/home") Home
       div(class="sized_box1")
       img(
         ,alt="sky" 
@@ -168,15 +168,15 @@ html(lang="en")
       .rlp
         .rlpc1
           h4(class="button_description") Click this button to view your matching ride options
-          a.button(href="routematching.html") Routematching
+          a.button(href="routematching") Routematching
         .rlpc2
           h4(class="button_description")
             | Click this button to find 
             |   longer trips.
-          a.button(href="long_trip.html") Long Trip
+          a.button(href="long_trip") Long Trip
         .rlpc3
           h4(class="button_description") Click this button to edit your profile
-          a.button(href="profile.html") Profile
+          a.button(href="profile") Profile
     footer
       p © 2023 Pool It
     script.
@@ -184,3 +184,4 @@ html(lang="en")
         function goBack() {
         window.history.back();
         }
+        
